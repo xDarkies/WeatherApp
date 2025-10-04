@@ -2,7 +2,9 @@
   margin: 0;
   padding: 0;
   text-align: center;
-  background-color: #2E8BC0;
+  background-color: white;
+  color:#0d0d0d;
+  height: 100vh;
 }
 div#Container{
   width: 100vw;

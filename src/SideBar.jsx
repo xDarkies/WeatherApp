@@ -35,10 +35,7 @@ function SideBar(){
       setActiveIndices([...activeIndices, index]);
     }
   };
-
-    useEffect(() => {
-        console.log("Nowe aktywne indeksy:", activeIndices);
-    }, [activeIndices]);
+  
 
   const handleOnPlacesChange = () => {
     if (!inputRef.current) return;
@@ -58,6 +55,8 @@ function SideBar(){
 
   return(
     <aside>
+      <h1 style={{color:"white"}}>Dane</h1>
+      <br></br>
       <StandaloneSearchBox 
         onLoad={(ref) => (inputRef.current = ref)}
         onPlacesChanged={handleOnPlacesChange}
@@ -76,7 +75,7 @@ function SideBar(){
             }}
         />
       </StandaloneSearchBox>
-
+      <br></br>
      
         <ul>
           {menuItems.map((item, index) => (

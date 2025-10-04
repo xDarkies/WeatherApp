@@ -22,10 +22,10 @@ ul li:last-child{
 
 .menuItems{
     float: left;
-    width: 75%;
+    width: 85%;
     background-color: #B1D4E0;
     border: 1px solid #145DA0;
-    border-radius: 15px;
+    border-radius: 5px;
     color: black;
     cursor: pointer;
     user-select: none;
@@ -34,17 +34,19 @@ ul li:last-child{
 aside{
     min-width: 180px;
     width: 25%;
-    height: 100%;
+    height: 600px;
     display: flex;
     flex-direction: column;
     align-self: flex-start;
-    float: left;
     background-color: #145DA0;
+    border-radius: 0px 20px 20px 0;
+    box-shadow: 5px 5px 5px black;
+    padding-top: 20px;
 }
 
 aside ul li.active{
     float: left;
-    width: 75%;
+    width: 85%;
     background-color: #2E8BC0;
     border-radius: 15px;
     border: 1px solid #145DA0;
