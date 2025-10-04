@@ -1,7 +1,15 @@
-import './SideBar.css'
-import { useState } from 'react';
+import './SideBar.css';
+import { useState, useRef } from 'react';
+import { useJsApiLoader, StandaloneSearchBox } from "@react-google-maps/api";
 
 function SideBar(){
+  const inputRef = useRef(null);
+
+  const { isLoaded } = useJsApiLoader({
+    id: "google-map-script",
+    googleMapsApiKey: "AIzaSyBKUEYnxRAsv_JXrvt0cCLns1-8i4MoG3w", 
+    libraries: ["places"],
+  });
 
   const [activeIndices, setActiveIndices] = useState([]);
 
@@ -25,26 +33,59 @@ function SideBar(){
     } else {
       setActiveIndices([...activeIndices, index]);
     }
-
-
   };
 
+  const handleOnPlacesChange = () => {
+    if (!inputRef.current) return;
+    const places = inputRef.current.getPlaces();
+    if (!places || places.length === 0) return;
+
+    const place = places[0];
+    if (!place.geometry || !place.geometry.location) return;
+
+    const lat = place.geometry.location.lat();
+    const lng = place.geometry.location.lng();
+
+    console.log("Wybrane miejsce:", lat, lng);  
+  };
+
+  if (!isLoaded) return <div>Ładowanie mapy...</div>;
+
   return(
-    <>
     <aside>
-      <ul>
-        {menuItems.map((item, index) => (
-          <li
-            key={index}
-            className={activeIndices.includes(index) ? "active" : "menuItems"}
-            onClick={() => handleClick(index)}
-          >
-            {item.label}
-          </li>
-        ))}
-      </ul>
+      <StandaloneSearchBox 
+        onLoad={(ref) => (inputRef.current = ref)}
+        onPlacesChanged={handleOnPlacesChange}
+      >
+        <input
+          type="text"
+          placeholder="Wyszukaj miejscowość"
+          style={{
+            width: "220px",
+            height: "25px",
+            padding: "0 10px",
+            borderRadius: "8px",
+            border: "2px solid #ccc",
+            fontSize: "16px",
+            margin: "10px 0"
+            }}
+        />
+      </StandaloneSearchBox>
+
+     
+        <ul>
+          {menuItems.map((item, index) => (
+            <li
+              key={index}
+              className={activeIndices.includes(index) ? "active" : "menuItems"}
+              onClick={() => handleClick(index)}
+            >
+              {item.label}
+            </li>
+          ))}
+        </ul>
+      
     </aside>
-    </>
   )
 }
 
