@@ -7,7 +7,7 @@ function SideBar(){
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: "AIzaSyBKUEYnxRAsv_JXrvt0cCLns1-8i4MoG3w", 
+    googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY, 
     libraries: ["places"],
   });
 
@@ -61,10 +61,10 @@ function SideBar(){
           type="text"
           placeholder="Wyszukaj miejscowość"
           style={{
-            width: "220px",
+            width: "80%",
             height: "25px",
             padding: "0 10px",
-            borderRadius: "8px",
+            borderRadius: "4px",
             border: "2px solid #ccc",
             fontSize: "16px",
             margin: "10px 0"
