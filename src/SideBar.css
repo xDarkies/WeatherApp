@@ -1,0 +1,21 @@
+body{
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.menuItems{
+    list-style-type: none;
+    width: 500px;
+    display: inline-block;
+}
+
+aside{
+    width: 500px;
+    height: 100%;
+    display: flex;
+}
+
+aside li.active{
+    color: aqua;
+    width: 500px;
+}
