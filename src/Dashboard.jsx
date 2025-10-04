@@ -1,9 +1,12 @@
+import './Dashboard.css';
 
 function DashBoard(){
-    <>
-    <div>
-        
-    </div>
-    </>
+    return(
+        <>
+        <div>
+
+         </div>
+        </>
+    );
 }
-export default Dashboard;
+export default DashBoard;
