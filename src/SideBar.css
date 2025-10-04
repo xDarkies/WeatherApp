@@ -32,6 +32,7 @@ ul li:last-child{
 }
   
 aside{
+    min-width: 180px;
     width: 25%;
     height: 100%;
     display: flex;

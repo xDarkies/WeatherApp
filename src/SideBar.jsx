@@ -1,8 +1,9 @@
 import './SideBar.css';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useJsApiLoader, StandaloneSearchBox } from "@react-google-maps/api";
 
 function SideBar(){
+    
   const inputRef = useRef(null);
 
   const { isLoaded } = useJsApiLoader({
@@ -35,6 +36,10 @@ function SideBar(){
     }
   };
 
+    useEffect(() => {
+        console.log("Nowe aktywne indeksy:", activeIndices);
+    }, [activeIndices]);
+
   const handleOnPlacesChange = () => {
     if (!inputRef.current) return;
     const places = inputRef.current.getPlaces();
@@ -49,7 +54,7 @@ function SideBar(){
     console.log("Wybrane miejsce:", lat, lng);  
   };
 
-  if (!isLoaded) return <div>Ładowanie mapy...</div>;
+  if (!isLoaded) return <div>Ładowanie...</div>;
 
   return(
     <aside>
