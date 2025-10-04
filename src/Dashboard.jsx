@@ -7,7 +7,8 @@ function DashBoard(){
   return (
     <>  
         <div id="Dashboard">
-            <Card>Test</Card>
+            <Card height="320px" width="320px">Test</Card>
+            <Card height="320px" width="500px">Chart</Card>
         </div>
     </>
   );

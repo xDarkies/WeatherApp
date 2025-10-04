@@ -14,4 +14,12 @@ div#Dashboard{
     position: absolute;
     left: 430px;
     top:180px;
+    display: flex;
+}
+#gridDashboard{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(2,1fr);
+    margin: 0;
+    padding: 0;
 }

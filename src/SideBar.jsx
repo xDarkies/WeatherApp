@@ -5,6 +5,7 @@ import { useJsApiLoader, StandaloneSearchBox } from "@react-google-maps/api";
 function SideBar(){
     
 const inputRef = useRef(null);
+const [howManyDays,setHowManyDays] = useState(1);
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
@@ -12,28 +13,19 @@ const inputRef = useRef(null);
     libraries: ["places"],
   });
 
-  const [activeIndices, setActiveIndices] = useState([]);
+  const [activeBox, setActiveBox] = useState(-1);
 
   const menuItems = [
-    { id: "temperature", label: "🌡️ Temperatura" },
-    { id: "precipitation", label: "💧 Opady" },
-    { id: "wind", label: "🌬️ Wiatr" },
-    { id: "humidity", label: "💦 Wilgotność" },
-    { id: "pressure", label: "🧭 Ciśnienie" },
-    { id: "clouds", label: "☁️ Zachmurzenie" },
-    { id: "extreme", label: "⚡ Zjawiska ekstremalne" },
-    { id: "map_sat", label: "🗺️ Mapa satelitarna" },
-    { id: "map_rain", label: "🌧️ Mapa opadów" },
-    { id: "map_temp", label: "🔥 Mapa temperatur" },
-    { id: "aqi", label: "🏭 Jakość powietrza" },
+    { id: "temperature", label: "🌡️ Temperature" },
+    { id: "quantityOfWater", label: "💧 Amount of precipitation" },
+    { id: "probOfPrecipitation", label: "🌬️ Probability of precipitation" },
+    { id: "visibility", label: "💦 Visibility" },
+    { id: "pressure", label: "🧭 Pressure" },
+    { id: "windSpeed", label: "☁️ Wind Speed" }
   ];
 
   const handleClick = (index) => {
-    if (activeIndices.includes(index)) {
-      setActiveIndices(activeIndices.filter((i) => i !== index));
-    } else {
-      setActiveIndices([...activeIndices, index]);
-    }
+    setActiveBox(index)
   };
   
 
@@ -51,13 +43,13 @@ const inputRef = useRef(null);
   const url = `http://127.0.0.1:8000/daily-forecast?lat=${lat}&lng=${lng}`;
 
   
-};
+  };
 
   if (!isLoaded) return <div>Ładowanie...</div>;
 
   return(
     <aside>
-      <h1 style={{color:"white"}}>Dane</h1>
+      <h1 style={{color:"white"}}>Data</h1>
       <br></br>
       <StandaloneSearchBox 
         onLoad={(ref) => (inputRef.current = ref)}
@@ -65,7 +57,7 @@ const inputRef = useRef(null);
       >
         <input
           type="text"
-          placeholder="Wyszukaj miejscowość"
+          placeholder="Search your location"
           style={{
             width: "80%",
             height: "25px",
@@ -78,12 +70,15 @@ const inputRef = useRef(null);
         />
       </StandaloneSearchBox>
       <br></br>
-     
+      <p>Choose how many days</p>
+      <input type="range" min={1} max={16} onChange={()=>{setHowManyDays(this.value)}}/>
+      <p>{howManyDays}</p>
+      <br></br>
         <ul>
           {menuItems.map((item, index) => (
             <li
               key={index}
-              className={activeIndices.includes(index) ? "active" : "menuItems"}
+              className={index === activeBox ? "active" : "menuItems"}
               onClick={() => handleClick(index)}
             >
               {item.label}

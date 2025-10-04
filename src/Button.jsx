@@ -9,7 +9,12 @@ function Button(props){
             paddingLeft: props.paddingWidth,
             paddingRight: props.paddingWidth,
             paddingTop: props.paddingHeight,
-            paddingBottom: props.paddingHeight 
+            paddingBottom: props.paddingHeight,
+            height: props.height,
+            width: props.width,
+            background: props.background,
+            border: props.border,
+            borderRadius: props.borderRadius,
         }}
         
         onClick={props.onClick}

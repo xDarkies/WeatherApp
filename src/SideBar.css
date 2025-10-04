@@ -13,7 +13,10 @@ ul{
 }
 
 ul li{
-    text-align: center;
+    text-align: left;
+    color: white;
+    padding-left: 50px;
+     margin-top: 10px;
 }
 
 ul li:last-child{
@@ -22,12 +25,10 @@ ul li:last-child{
 
 .menuItems{
     float: left;
-    width: 85%;
-    background-color: #B1D4E0;
-    border: 1px solid #145DA0;
+    width: 75%;
+    background-color: #2e2f30;
     border-radius: 5px;
-    color: black;
-    cursor: pointer;
+    cursor:pointer;
     user-select: none;
 }
   
@@ -54,10 +55,9 @@ aside{
 
 aside ul li.active{
     float: left;
-    width: 85%;
+    width: 75%;
     background-color: #2E8BC0;
     border-radius: 5px;
-    border: 1px solid #145DA0;
     cursor: pointer;
     user-select: none;
 }

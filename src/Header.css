@@ -4,10 +4,10 @@ div#Header{
   top:50px;
   left:430px;
 
-  width: 900px;
+  width: 940px;
   align-items: center;
   justify-content: space-between;
-  padding: 50px;
+  padding: 30px;
 
 background: rgba(252, 252, 252, 0.19);
 border-radius: 16px;
