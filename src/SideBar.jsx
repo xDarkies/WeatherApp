@@ -2,9 +2,9 @@ import './SideBar.css';
 import { useState, useRef, useEffect } from 'react';
 import { useJsApiLoader, StandaloneSearchBox } from "@react-google-maps/api";
 
-function SideBar({setWeatherData}){
+function SideBar(){
     
-  const inputRef = useRef(null);
+const inputRef = useRef(null);
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
@@ -50,14 +50,7 @@ function SideBar({setWeatherData}){
 
   const url = `http://127.0.0.1:8000/daily-forecast?lat=${lat}&lng=${lng}`;
 
-  try {
-    const res = await fetch(url);
-    const data = await res.json();
-    setWeatherData(data);
-    
-  } catch (error) {
-    console.error("Błąd pobierania z backendu:", error);
-  }
+  
 };
 
   if (!isLoaded) return <div>Ładowanie...</div>;

@@ -1,9 +1,10 @@
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-weight: 400;
 
   color: rgba(255, 255, 255, 0.87);
-
+  background-color: #1d1d1d;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -15,4 +16,3 @@ body {
   min-width: 320px;
   /* min-height: 100vh; */
 }
-
