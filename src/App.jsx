@@ -11,8 +11,10 @@ function App() {
   return (
     <div id="Container">
       <Header></Header>
-      <SideBar></SideBar>
-      <DashBoard></DashBoard>
+      <div id="Main">
+        <SideBar></SideBar>
+        <DashBoard></DashBoard>
+      </div>
     </div>
   )
 }
