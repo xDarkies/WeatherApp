@@ -1,12 +1,11 @@
 import './Dashboard.css';
 
-function DashBoard(){
-    return(
-        <>
-        <div id="Dashboard">
-            <h1>Dashboard</h1>
-         </div>
-        </>
-    );
+function DashBoard({ weatherData }){
+const daily = weatherData;
+if(!daily)return;
+
+  return (
+    <></>
+  );
 }
 export default DashBoard;

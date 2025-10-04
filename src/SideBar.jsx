@@ -2,7 +2,7 @@ import './SideBar.css';
 import { useState, useRef, useEffect } from 'react';
 import { useJsApiLoader, StandaloneSearchBox } from "@react-google-maps/api";
 
-function SideBar(){
+function SideBar({setWeatherData}){
     
   const inputRef = useRef(null);
 
@@ -37,19 +37,28 @@ function SideBar(){
   };
   
 
-  const handleOnPlacesChange = () => {
-    if (!inputRef.current) return;
-    const places = inputRef.current.getPlaces();
-    if (!places || places.length === 0) return;
+  const handleOnPlacesChange = async () => {
+  if (!inputRef.current) return;
+  const places = inputRef.current.getPlaces();
+  if (!places || places.length === 0) return;
 
-    const place = places[0];
-    if (!place.geometry || !place.geometry.location) return;
+  const place = places[0];
+  if (!place.geometry || !place.geometry.location) return;
 
-    const lat = place.geometry.location.lat();
-    const lng = place.geometry.location.lng();
+  const lat = place.geometry.location.lat();
+  const lng = place.geometry.location.lng();
 
-    console.log("Wybrane miejsce:", lat, lng);  
-  };
+  const url = `http://127.0.0.1:8000/daily-forecast?lat=${lat}&lng=${lng}`;
+
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
+    setWeatherData(data);
+    
+  } catch (error) {
+    console.error("Błąd pobierania z backendu:", error);
+  }
+};
 
   if (!isLoaded) return <div>Ładowanie...</div>;
 

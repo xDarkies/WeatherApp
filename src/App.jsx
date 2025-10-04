@@ -8,12 +8,14 @@ import DashBoard from './Dashboard.jsx'
 
 function App() {
 
+  const [weatherData, setWeatherData] = useState(null);
+
   return (
     <div id="Container">
       <Header></Header>
       <div id="Main">
-        <SideBar></SideBar>
-        <DashBoard></DashBoard>
+        <SideBar setWeatherData={setWeatherData} />
+        <DashBoard weatherData={weatherData} />
       </div>
     </div>
   )
