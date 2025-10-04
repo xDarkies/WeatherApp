@@ -2,9 +2,10 @@
   margin: 0;
   padding: 0;
   text-align: center;
-  background-color: white;
+  background-color: #d9dddc;
   color:#0d0d0d;
   height: 100vh;
+  font-family:'Alan Sans';
 }
 div#Container{
   width: 100vw;
