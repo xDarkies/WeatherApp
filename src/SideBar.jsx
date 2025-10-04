@@ -63,16 +63,33 @@ const [howManyDays,setHowManyDays] = useState(1);
             height: "25px",
             padding: "0 10px",
             borderRadius: "4px",
-            border: "2px solid #ccc",
             fontSize: "16px",
-            margin: "10px 0"
+            margin: "10px 0",
+            backgroundColor:"#2e2f30",
+            color:"white",
             }}
         />
       </StandaloneSearchBox>
       <br></br>
-      <p>Choose how many days</p>
-      <input type="range" min={1} max={16} onChange={()=>{setHowManyDays(this.value)}}/>
-      <p>{howManyDays}</p>
+      <p style={{color:"white",padding: "10px 15px"}}>Choose how many days</p>
+      <select id="days">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+      </select>
       <br></br>
         <ul>
           {menuItems.map((item, index) => (

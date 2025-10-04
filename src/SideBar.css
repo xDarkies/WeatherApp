@@ -61,3 +61,10 @@ aside ul li.active{
     cursor: pointer;
     user-select: none;
 }
+select{
+    margin: 0 auto;
+    width: 90%;
+    background-color: #2e2f30;
+    color: white;
+    padding: 5px 10px;
+}
