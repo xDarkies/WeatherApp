@@ -4,7 +4,7 @@ function DashBoard(){
     return(
         <>
         <div id="Dashboard">
-            t
+            <h1>Dashboard</h1>
          </div>
         </>
     );
