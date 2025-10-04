@@ -3,8 +3,8 @@ import './Dashboard.css';
 function DashBoard(){
     return(
         <>
-        <div>
-
+        <div id="Dashboard">
+            t
          </div>
         </>
     );

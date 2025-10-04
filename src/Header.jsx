@@ -3,7 +3,7 @@ import './Header.css'
 function Header(){
     return(
         <>
-            <div>
+            <div id="Header">
                 <h1>Weather App</h1>
             </div>
         </>
