@@ -1,11 +1,41 @@
 import './SideBar.css';
 import { useState, useRef, useEffect } from 'react';
 import { useJsApiLoader, StandaloneSearchBox } from "@react-google-maps/api";
+import { geolocated } from "react-geolocated";
 
-function SideBar(){
+function SideBar({setWeatherData}){
     
 const inputRef = useRef(null);
-const [howManyDays,setHowManyDays] = useState(1);
+const [coords, setCoords] = useState(null);
+
+useEffect(() => {
+  if ("geolocation" in navigator) {
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        const newCoords = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        };
+        
+        setCoords(newCoords);
+
+        const url = `http://127.0.0.1:2137/daily-forecast?lat=${newCoords.lat}&lng=${newCoords.lng}`;
+        
+        try {
+          const res = await fetch(url);
+          const data = await res.json();
+          setWeatherData(data);
+          
+        } catch (error) {
+          console.error("Błąd pobierania z backendu:", error);
+        }
+      },
+      (error) => {
+        console.error("Błąd geolokalizacji:", error);
+      }
+    );
+  }
+}, []);
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
@@ -29,7 +59,7 @@ const [howManyDays,setHowManyDays] = useState(1);
   };
   
 
-  const handleOnPlacesChange = async () => {
+ const handleOnPlacesChange = async () => {
   if (!inputRef.current) return;
   const places = inputRef.current.getPlaces();
   if (!places || places.length === 0) return;
@@ -39,11 +69,22 @@ const [howManyDays,setHowManyDays] = useState(1);
 
   const lat = place.geometry.location.lat();
   const lng = place.geometry.location.lng();
+ 
 
-  const url = `http://127.0.0.1:8000/daily-forecast?lat=${lat}&lng=${lng}`;
-
+  const url = `http://127.0.0.1:2137/daily-forecast?lat=${lat}&lng=${lng}`;
   
-  };
+
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
+    setWeatherData(data);
+
+    
+  } catch (error) {
+    console.error("Błąd pobierania z backendu:", error);
+  }
+};
+
 
   if (!isLoaded) return <div>Ładowanie...</div>;
 

@@ -19,7 +19,7 @@ function App() {
     amplitude={1}
     speed={0.5}
   />
-     <Header>Weather App with TTS</Header>
+     <Header weatherData={weatherData}>Weather App with TTS</Header>
      <SideBar setWeatherData={setWeatherData} />
      <DashBoard weatherData={weatherData} />
 </>
