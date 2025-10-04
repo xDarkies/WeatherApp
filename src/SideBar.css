@@ -1,21 +1,37 @@
 body{
-    margin-left: 0;
-    padding-left: 0;
+    margin: 0;
+    padding: 0;
+}
+
+ul{
+    list-style-type: none;
+    float: left;
+}
+
+ul li{
+    text-align: center;
 }
 
 .menuItems{
-    list-style-type: none;
-    width: 500px;
-    display: inline-block;
-}
+    float: left;
+    width: 100%;
 
+    background-color: #B1D4E0;
+    border: 1px solid #145DA0;
+    color: black;
+}
+  
 aside{
-    width: 500px;
+    width: 25%;
     height: 100%;
     display: flex;
+    align-self: flex-start;
 }
 
 aside li.active{
-    color: aqua;
-    width: 500px;
+    float: left;
+    width: 100%;
+    background-color: #B1D4E0;
+    border: 1px solid #145DA0;
+    color: rgb(255, 84, 84);
 }
