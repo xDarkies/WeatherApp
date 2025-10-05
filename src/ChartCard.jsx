@@ -46,9 +46,17 @@ function ChartCard({ weatherData, days, active }) {
         const limitedTemp = tempData.slice(0, days *24 );
         const limitedLabels = data.hourly.time.slice(0, days*24).map((label) => label.replace("T", " "));;
         
-        
-        setTemp(limitedTemp);
-        setLabels(limitedLabels);
+        const lT = [];
+        const lL = [];
+        let j = 0;
+        for(let i = 0;i < days * 24;i=i+4){
+          lT[j] = limitedTemp[i];
+          lL[j] = limitedLabels[i];
+          j++;
+        }
+        console.log(lL);
+        setTemp(lT);
+        setLabels(lL);
       } catch (error) {
         console.error("Błąd pobierania z backendu:", error);
       }
