@@ -9,6 +9,8 @@ import Aurora from './Aurora';
 function App() {
 
   const [weatherData, setWeatherData] = useState(null);
+  const [days,setDays] = useState(null)
+  const [active,setActive] = useState(null)
 
   
   return (
@@ -20,8 +22,8 @@ function App() {
     speed={0.5}
   />
      <Header weatherData={weatherData}>Weather App with TTS</Header>
-     <SideBar setWeatherData={setWeatherData} />
-     <DashBoard weatherData={weatherData} />
+     <SideBar setWeatherData={setWeatherData} setNumOfDays={setDays} setactiveBox={setActive}/>
+     <DashBoard weatherData={weatherData} days={days} active={active}/>
 </>
   )
 }

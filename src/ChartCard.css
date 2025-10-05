@@ -6,7 +6,6 @@
     padding: 10px 15px;
     text-align: left;
     padding-left: 30px;
-}
-#Card img{
-    float: left;
+    width: 500px;
+    height: 320px;
 }
