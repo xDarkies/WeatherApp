@@ -25,11 +25,11 @@ function Header(props) {
         console.error("Błąd pobierania z backendu:", error);
       }
 
-      // const url1 = `http://127.0.0.1:2137/formatTTS?text=${props.weatherData}`;
-      //   const textRes = await fetch(url1);
-      //   const textRes2 = await textRes.json();
-      //   if (!textRes.ok) throw new Error("Błąd formatowania TTS");
-      //   const text = await textRes2.message;
+      const url1 = `http://127.0.0.1:2137/formatTTS?text=${props.weatherData}`;
+        const textRes = await fetch(url1);
+        const textRes2 = await textRes.json();
+        if (!textRes.ok) throw new Error("Błąd formatowania TTS");
+        const text = await textRes2.message;
 
     };
 
